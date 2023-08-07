@@ -1,13 +1,10 @@
 export const isClient = typeof window !== "undefined";
 
-export const isVisited = isClient && localStorage.getItem("isVisited");
+export const getIsVisited = () =>
+  isClient && localStorage.getItem("isVisited") === "true";
 
-export const isDarkMode =
-  isClient &&
-  (localStorage.getItem("isDarkMode") ||
-    window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-export const toogleKey = (key: string, value: boolean) =>
-  isClient && value
-    ? localStorage.setItem(key, "true")
-    : localStorage.removeItem(key);
+export const getTheme = () =>
+  (isClient && localStorage.getItem("theme")) ||
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";

@@ -9,7 +9,7 @@ const WelcomePage = () => {
     <div>
       <LightBulb
         isLighted={circleClickCount % 2 === 0}
-        onClick={() => console.log("clicked")}
+        onClick={() => setCircleClickCount((prev) => prev + 1)}
       />
     </div>
   );
